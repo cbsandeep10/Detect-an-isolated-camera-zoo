@@ -12,7 +12,7 @@ def inference(csv_file):
     loaded_model = model_from_json(loaded_model_json)
     loaded_model.load_weights("model_wieghts_isolation.h5")
     df = pd.read_csv(csv_file, header=None, names=["id", "label"], dtype=str)
-    df = df.replace({'true':'isolation','false':'noaction'})
+    df = df.replace({'true':'isolation','false':'noaction', 'True':'isolation', 'False':'noaction'})
     test_datagen = ImageDataGenerator(rescale=1. / 255)
     valid_generator=test_datagen.flow_from_dataframe(
         dataframe=df,
